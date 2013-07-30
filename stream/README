@@ -1,0 +1,3 @@
+Hash Stream
+
+An abstract hash stream class that implements `crypto.Hash`.

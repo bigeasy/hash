@@ -1,0 +1,28 @@
+{
+    "name" : "hash.stream",
+    "description" : "An abstract hash stream class that implements `crypto.Hash`",
+    "version": "0.0.0",
+    "url" : "http://bigeasy.github.com/edify",
+    "keywords" : [
+      "documentation", "api", "docs", "cms", "website",
+      "github", "pages", "html", "markdown", "docco"
+    ],
+    "author" : "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors" : [],
+    "devDependencies":
+    {
+        "proof": "0.0.33"
+    },
+    "dependencies":
+    {
+    },
+    "repository":
+    {
+        "type": "git",
+        "url": "http://github.com/bigeasy/hash.git"
+    },
+    "scripts":
+    {
+        "test": "(proof run t/*/*.t.js | tee .proof.out | proof progress) || (proof errors < .proof.out)"
+    }
+}

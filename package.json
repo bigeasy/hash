@@ -1,0 +1,29 @@
+{
+    "name" : "hash",
+
+    "version": "0.0.0",
+    "url" : "http://bigeasy.github.com/hash",
+    "keywords" : [ "hash" ],
+    "author" : "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors" : [],
+    "devDependencies":
+    {
+        "proof": "0.0.33"
+    },
+    "dependencies":
+    {
+    },
+    "repository":
+    {
+        "type": "git",
+        "url": "http://github.com/bigeasy/edify.git"
+    },
+    "scripts":
+    {
+        "test": "(proof run */t/*/*.t.js | tee .proof.out | proof progress) || (proof errors < .proof.out)"
+    },
+    "engines":
+    {
+        "node": "> 0.6.0"
+    }
+}
