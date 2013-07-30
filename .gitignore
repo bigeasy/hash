@@ -1,0 +1,5 @@
+.DS_Store
+.AppleDouble
+node_modules/*
+*.swp
+.proof.out
