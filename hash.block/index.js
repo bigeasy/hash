@@ -1,4 +1,4 @@
-var HashStream = require('hash/stream')
+var HashStream = require('hash.stream')
 
 function BlockStream (blockSize, block, remainder) {
     this._block = block
