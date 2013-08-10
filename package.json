@@ -19,7 +19,7 @@
     },
     "scripts":
     {
-        "test": "(proof run */t/*/*.t.js | tee .proof.out | proof progress) || (proof errors < .proof.out)"
+        "test": "t/test"
     },
     "engines":
     {
