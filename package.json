@@ -1,28 +1,26 @@
 {
-    "name" : "hash",
-    "version": "0.0.0",
-    "url" : "http://bigeasy.github.com/hash",
-    "keywords" : [ "hash" ],
-    "author" : "Alan Gutierrez <alan@prettyrobots.com>",
-    "contributors" : [],
+    "name" :            "hash",
+    "version":          "0.0.0",
+    "url":              "http://bigeasy.github.com/hash",
+    "keywords":
+    [
+                        "hash", "fnv", "djb"
+    ],
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":
+    [],
     "devDependencies":
     {
-        "proof": "0.0.35"
+                        "proof": "0.0.35"
     },
     "dependencies":
-    {
-    },
-    "repository":
-    {
-        "type": "git",
-        "url": "http://github.com/bigeasy/edify.git"
+    {},
+    "repository": {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/edify.git"
     },
     "scripts":
     {
-        "test": "t/test"
-    },
-    "engines":
-    {
-        "node": "> 0.6.0"
+                        "test": "t/test"
     }
 }
