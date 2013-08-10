@@ -1,4 +1,5 @@
 /node_modules/*
 /c/djb
+/c/fnv
 /.proof.out
 /coverage
