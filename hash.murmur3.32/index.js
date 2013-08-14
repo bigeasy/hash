@@ -27,10 +27,10 @@ function fmix32 (hash) {
 }
 
 // With this, unused, function we always make sure we have an unsigned integer
-// value, but its not absolutely necessary. We're only interested in the integer
-// value when we perform addition or write the value to our buffer. We do not do
-// this within Murmur's mix function. I'm leaving it in place for a benchmark
-// where I can gauge the cost of `>>> 0`.
+// value, but it's not absolutely necessary. We're only interested in the
+// integer value when we perform addition or write the value to our buffer. We
+// do not do this within Murmur's mix function. I'm leaving it in place for a
+// benchmark where I can gauge the cost of `>>> 0`.
 
 function fmix32_pure (hash) {
     hash = (hash ^ (hash >>> 16)) >>> 0
