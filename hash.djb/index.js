@@ -1,29 +1,15 @@
-var HashStream = require('hash.stream')
+var Hash832 = require('hash.8.32')
 var util = require('util')
 
 function HashDJB (seed) {
-    HashStream.call(this)
-    this._hash = seed;
-}
-util.inherits(HashDJB, HashStream)
-
-HashDJB.prototype._transform = function (block, encoding, callback) {
-    var hash = this._hash
-
-    for (var i = 0; i < block.length; i++) {
-        hash = ((hash * 33) + block[i]) >>> 0
+    function djb (block) {
+        for (var i = 0; i < block.length; i++) {
+            seed = (seed * 33 + block[i]) >>> 0
+        }
+        return seed
     }
-
-    this._hash = hash
-
-    callback()
+    Hash832.call(this, djb, seed)
 }
-
-HashDJB.prototype._flush = function (callback) {
-    var buffer = new Buffer(4)
-    buffer.writeUInt32BE(this._hash, 0)
-    this.push(buffer)
-    callback()
-}
+util.inherits(HashDJB, Hash832)
 
 module.exports = HashDJB
