@@ -6,7 +6,8 @@ rm -rf coverage
 
 count=1;
 for file in $(find hash.* -name \*.t.js); do
-  NODE_PATH=. node_modules/.bin/istanbul cover -x '*/t/**' $file > /dev/null 2>&1
+  if [[ "$file" = */sha1.t.js ]]; then continue; fi
+  NODE_PATH=. node_modules/.bin/istanbul cover -x 'proof.js' -x '*/t/**' $file > /dev/null 2>&1
   mv coverage/coverage.json coverage/coverage$count.json
   count=$(expr $count + 1)
 done
