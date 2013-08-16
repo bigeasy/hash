@@ -51,7 +51,10 @@ function HashMurmur332 (seed) {
 
     function blocks (buffer, count) {
         for (var i = 0; i < count; i++) {
-            var k1 = buffer.readUInt32LE(i * 4)
+            var k1 =  buffer[i * 4] +
+                     (buffer[i * 4 + 1] <<  8) +
+                     (buffer[i * 4 + 2] << 16) +
+                     (buffer[i * 4 + 3] << 24)
 
             k1 = multiply(k1, c1)
             k1 = rotl32(k1, 15)
@@ -81,9 +84,7 @@ function HashMurmur332 (seed) {
 
         hash = fmix32(hash) >>> 0
 
-        var buffer = new Buffer(4)
-        buffer.writeUInt32BE(hash, 0)
-        return buffer
+        return [ hash ]
     }
 
     HashBlock.call(this, blocks, remainder, 4)
