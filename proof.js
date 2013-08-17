@@ -1,14 +1,14 @@
 module.exports = require('proof')(function (step, equal) {
     return {
-        sanity: function (constructor, expected, twiddle, callback) {
+        sanity: function (constructor, expected, options, callback) {
             var hashed = 0
             var hashes = []
             var summary
             var key = new Buffer(256)
 
             if (arguments.length == 3) {
-                callback = twiddle
-                twiddle = true
+                callback = options
+                options = { twiddle: true, blockSize: 0 }
             }
 
             function createHash (seed) {
@@ -38,9 +38,13 @@ module.exports = require('proof')(function (step, equal) {
                 })
                 hash.on('end', done)
                 for (var i = 0; i < hashes.length; i++) {
-                    if (twiddle) hashes[i].writeUInt32LE(hashes[i].readUInt32BE(0), 0)
-                    console.log(hashes[i].toString('hex'))
-                    hash.write(hashes[i].slice(0, 4))
+                    var blockSize = options.blockSize || hashes[i].length
+                    if (options.twiddle) {
+                        for (var j = 0, J = blockSize / 4; j < J; j++) {
+                            hashes[i].writeUInt32LE(hashes[i].readUInt32BE(j * 4), j * 4)
+                        }
+                    }
+                    hash.write(hashes[i].slice(0, blockSize))
                 }
                 hash.end()
             }
