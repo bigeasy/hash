@@ -35,6 +35,7 @@ function fmix32 (hash) {
     hash ^= hash >>> 16
     return hash
 }
+
 function rotl32 (number, bits) {
     return (number << bits) | (number >>> 32 - bits)
 }
