@@ -1,6 +1,7 @@
 #include <node.h>
 #include <node_object_wrap.h>
 #include <v8.h>
+#include <stdio.h>
 
 extern "C" {
 extern void* hash_allocate (uint32_t seed);
@@ -16,6 +17,10 @@ class Hash : public node::ObjectWrap {
 public:
     static void Initialize(Handle<Object> target);
 
+    bool HashInit (uint32_t seed) {
+      return (hash_ = hash_allocate(seed)) != NULL;
+    }
+
 protected:
     static Handle<Value>  New(const Arguments& args);
    /*static void HashUpdate(const FunctionCallbackInfo<Value>& args);
@@ -25,6 +30,7 @@ protected:
     }
 
     ~Hash () {
+        printf("destroying\n");
         if (hash_) hash_free(hash_);
     }
 
@@ -44,8 +50,23 @@ void Hash::Initialize (Handle<Object> target) {
 
 Handle<Value> Hash::New (const Arguments& args) {
     HandleScope scope;
+    uint32_t seed;
 
-   return ThrowException(Exception::Error(String::New("Must give hashtype string as argument")));
+    if (args.Length() == 0 || !args[0]->IsNumber()) {
+        seed = 0;
+    } else {
+        seed = args[0]->Uint32Value();
+    }
+
+    Hash* hash = new Hash();
+    if (!hash->HashInit(seed)) {
+        return ThrowException(Exception::Error(String::New(
+          "Unable to allocate hash.")));
+    }
+    printf("here!\n");
+
+    hash->Wrap(args.This());
+    return args.This();
 }
 
 void init(Handle<Object> target) {
