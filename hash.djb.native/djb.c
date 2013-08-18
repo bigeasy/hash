@@ -19,7 +19,7 @@ void hash_free (void* hash)
     free(hash);
 }
 
-void hash_block_size ()
+int hash_block_size ()
 {
     return 1;
 }
@@ -39,17 +39,5 @@ void hash_update (void* hash, void* key, int len)
 
 void hash_remainder (void* hash, void* out)
 {
-    out = hash;
-}
-
-void hash (const void * key, int len, unsigned int seed, void * out)
-{
-    const unsigned char * data = (const unsigned char*)key;
-    int i;
-
-    for (i = 0; i < len; ++i) {
-        seed = 33 * seed + data[i];
-    }
-
-    *(unsigned int*)out = seed;
+    *(uint32_t*)out = *(uint32_t*)hash;
 }
