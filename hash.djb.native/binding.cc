@@ -22,7 +22,8 @@ public:
     }
 
 protected:
-    static Handle<Value>  New(const Arguments& args);
+    static Handle<Value> New(const Arguments& args);
+    static Handle<Value> HashHello(const Arguments& args);
    /*static void HashUpdate(const FunctionCallbackInfo<Value>& args);
     static void HashDigest(const FunctionCallbackInfo<Value>& args);*/
 
@@ -30,7 +31,6 @@ protected:
     }
 
     ~Hash () {
-        printf("destroying\n");
         if (hash_) hash_free(hash_);
     }
 
@@ -44,6 +44,8 @@ void Hash::Initialize (Handle<Object> target) {
     Local<FunctionTemplate> t = FunctionTemplate::New(New);
 
     t->InstanceTemplate()->SetInternalFieldCount(1);
+
+    NODE_SET_PROTOTYPE_METHOD(t, "hello", HashHello);
 
     target->Set(String::New("Hash"), t->GetFunction());
 }
@@ -63,10 +65,14 @@ Handle<Value> Hash::New (const Arguments& args) {
         return ThrowException(Exception::Error(String::New(
           "Unable to allocate hash.")));
     }
-    printf("here!\n");
 
     hash->Wrap(args.This());
     return args.This();
+}
+
+Handle<Value> Hash::HashHello (const Arguments& args) {
+    HandleScope scope;
+    return scope.Close(String::New("Hello, World!"));
 }
 
 void init(Handle<Object> target) {

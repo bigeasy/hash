@@ -1,3 +1,4 @@
 var assert = require('assert');
 var binding = require('./build/Release/binding');
-new (binding.Hash);
+var hash = new (binding.Hash);
+console.log(hash.hello())
