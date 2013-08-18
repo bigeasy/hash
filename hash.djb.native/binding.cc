@@ -1,4 +1,6 @@
 #include <node.h>
+#include <node_buffer.h>
+#include <string_bytes.h>
 #include <node_object_wrap.h>
 #include <v8.h>
 #include <stdio.h>
@@ -12,20 +14,16 @@ extern void hash_remainder(void* hash, void* out);
 }
 
 using namespace v8;
+using namespace node;
 
-class Hash : public node::ObjectWrap {
+class Hash : public ObjectWrap {
 public:
     static void Initialize(Handle<Object> target);
 
-    bool HashInit (uint32_t seed) {
-      return (hash_ = hash_allocate(seed)) != NULL;
-    }
-
 protected:
     static Handle<Value> New(const Arguments& args);
-    static Handle<Value> HashHello(const Arguments& args);
-   /*static void HashUpdate(const FunctionCallbackInfo<Value>& args);
-    static void HashDigest(const FunctionCallbackInfo<Value>& args);*/
+    static Handle<Value> HashBlock(const Arguments& args);
+    static Handle<Value> HashRemainder (const Arguments& args);
 
     Hash () : hash_(NULL) {
     }
@@ -45,7 +43,8 @@ void Hash::Initialize (Handle<Object> target) {
 
     t->InstanceTemplate()->SetInternalFieldCount(1);
 
-    NODE_SET_PROTOTYPE_METHOD(t, "hello", HashHello);
+    NODE_SET_PROTOTYPE_METHOD(t, "block", HashBlock);
+    NODE_SET_PROTOTYPE_METHOD(t, "remainder", HashRemainder);
 
     target->Set(String::New("Hash"), t->GetFunction());
 }
@@ -61,7 +60,8 @@ Handle<Value> Hash::New (const Arguments& args) {
     }
 
     Hash* hash = new Hash();
-    if (!hash->HashInit(seed)) {
+    hash->hash_ = hash_allocate(seed);
+    if (hash->hash_ == NULL) {
         return ThrowException(Exception::Error(String::New(
           "Unable to allocate hash.")));
     }
@@ -70,9 +70,31 @@ Handle<Value> Hash::New (const Arguments& args) {
     return args.This();
 }
 
-Handle<Value> Hash::HashHello (const Arguments& args) {
+Handle<Value> Hash::HashBlock (const Arguments& args) {
     HandleScope scope;
-    return scope.Close(String::New("Hello, World!"));
+
+    Hash *hash = ObjectWrap::Unwrap<Hash>(args.This());
+
+    if (!Buffer::HasInstance(args[0])) {
+        return ThrowException(Exception::TypeError(String::New("Not a buffer")));
+    }
+
+    printf("length: %ld\n", Buffer::Length(args[0]));
+    hash_update(hash->hash_, Buffer::Data(args[0]), Buffer::Length(args[0]));
+
+    return args.This();
+}
+
+Handle<Value> Hash::HashRemainder (const Arguments& args) {
+    HandleScope scope;
+    uint32_t value;
+
+    Hash *hash = ObjectWrap::Unwrap<Hash>(args.This());
+
+    hash_remainder(hash->hash_, &value);
+
+    return scope.Close(StringBytes::Encode(
+        reinterpret_cast<const char*>(&value), 4, BUFFER));
 }
 
 void init(Handle<Object> target) {
