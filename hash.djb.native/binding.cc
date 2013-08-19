@@ -79,7 +79,6 @@ Handle<Value> Hash::HashBlock (const Arguments& args) {
         return ThrowException(Exception::TypeError(String::New("Not a buffer")));
     }
 
-    printf("length: %ld\n", Buffer::Length(args[0]));
     hash_update(hash->hash_, Buffer::Data(args[0]), Buffer::Length(args[0]));
 
     return args.This();
@@ -101,4 +100,4 @@ void init(Handle<Object> target) {
   Hash::Initialize(target);
 }
 
-NODE_MODULE(binding, init);
+NODE_MODULE(djb, init);
