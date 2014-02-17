@@ -3,7 +3,8 @@ var util = require('util')
 
 var __slice = [].slice
 
-function HashStream () {
+function HashStream (blockSize) {
+    this._blockSize = blockSize
     stream.Transform.call(this)
 }
 util.inherits(HashStream, stream.Transform)
@@ -13,7 +14,7 @@ HashStream.prototype.update = function () {
 }
 
 HashStream.prototype.digest = function (encoding) {
-    this.write.end()
+    this.end()
 
     var buffer = this.read()
     return encoding ? buffer.toString(encoding) : buffer
