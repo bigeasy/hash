@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
-require('proof')(1, function (equal) {
+require('proof')(2, function (equal, deepEqual) {
     var HashStream = require('..')
     var util = require('util')
+    var hash
+
     function PassThrough () {
         HashStream.call(this)
     }
@@ -14,7 +16,12 @@ require('proof')(1, function (equal) {
     PassThrough.prototype._flush = function (callback) {
         callback()
     }
-    var hash = new PassThrough
+
+    hash= new PassThrough
     hash.update(new Buffer([ 0, 1, 0, 0x0a  ]))
     equal(hash.digest('hex'), '0001000a', 'hex')
+
+    hash = new PassThrough
+    hash.update(new Buffer([ 0, 1, 0, 0x0a  ]))
+    deepEqual(hash.digest().toJSON(), [ 0, 1, 0, 0xa ], 'buffer')
 })
