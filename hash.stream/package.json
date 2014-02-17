@@ -1,28 +1,29 @@
 {
-    "name" : "hash.stream",
-    "description" : "An abstract hash stream class that implements `crypto.Hash`",
-    "version": "0.0.0",
-    "url" : "http://bigeasy.github.com/edify",
-    "keywords" : [
-      "documentation", "api", "docs", "cms", "website",
-      "github", "pages", "html", "markdown", "docco"
+    "name":             "hash.stream",
+    "version":          "0.0.0",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "An abstract hash stream class that implements `crypto.Hash`",
+    "keywords":
+    [
+                        "hash", "digest", "checksum", "algorithm"
     ],
-    "author" : "Alan Gutierrez <alan@prettyrobots.com>",
-    "contributors" : [],
-    "devDependencies":
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/hash",
+    "bugs":             "https://github.com/bigeasy/hash/issues",
+    "licenses":
+    [{
+                        "type": "MIT",
+                        "url": "http://github.com/bigeasy/skip/raw/master/LICENSE"
+    }],
+    "repository":
     {
-        "proof": "0.0.33"
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/hash.git"
     },
     "dependencies":
     {
     },
-    "repository":
+    "devDependencies":
     {
-        "type": "git",
-        "url": "http://github.com/bigeasy/hash.git"
-    },
-    "scripts":
-    {
-        "test": "(proof run t/*/*.t.js | tee .proof.out | proof progress) || (proof errors < .proof.out)"
     }
 }

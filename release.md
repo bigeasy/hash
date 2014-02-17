@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Tidy `package.json` for `hash.stream`. #48.
  * Test `crypto.Hash.digest` with no encoding. #47.
  * Assert valid hash digest encoding. #46.
  * Test `crypto.Hash` digest functions. #45.
