@@ -4,7 +4,7 @@
 
 One of my concerns is how to benchmark these relative to their C
 implementations. Some algorithms, like CityHash, appear to be based on
-compilingto specific processor instructions, so I can't imagine that they are
+compiling to specific processor instructions, so I can't imagine that they are
 going to be anything but slow in JavaScript. CityHash is a complex, wending
 implementation of a hash
 
