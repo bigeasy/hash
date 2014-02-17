@@ -1,5 +1,6 @@
 var stream = require('stream')
 var util = require('util')
+var ok = require('assert').ok
 
 var __slice = [].slice
 
@@ -14,6 +15,10 @@ HashStream.prototype.update = function () {
 }
 
 HashStream.prototype.digest = function (encoding) {
+    ok(!encoding || [ 'base64', 'binary', 'hex' ].some(function (allowed) {
+        return allowed = encoding
+    }))
+
     this.end()
 
     var buffer = this.read()

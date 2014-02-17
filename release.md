@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Assert valid hash digest encoding. #46.
  * Test `crypto.Hash` digest functions. #45.
  * Implement 32-bit Murmur3 example program. #44.
  * Upgrade Proof to 0.0.42. #42.
