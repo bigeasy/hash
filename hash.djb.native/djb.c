@@ -1,22 +1,23 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "hash.h"
+
 /*
  *  See: https://code.google.com/p/smhasher/source/browse/trunk/Hashes.cpp
  *  See: http://www.cse.yorku.ca/~oz/hash.html
  */
 char needed[] = "0xbdb4b640";
 
-void* hash_allocate (uint32_t seed)
+hash_t hash_allocate (uint32_t seed)
 {
-    uint32_t* hash = malloc(sizeof(uint32_t));
-    *hash = seed;
+    hash_t hash;
+    hash.number = seed;
     return hash;
 }
 
-void hash_free (void* hash)
+void hash_free (hash_t hash)
 {
-    free(hash);
 }
 
 int hash_block_size ()
@@ -24,9 +25,9 @@ int hash_block_size ()
     return 1;
 }
 
-void hash_update (void* hash, void* key, int len)
+void hash_update (hash_t* hash, void* key, int len)
 {
-    uint32_t seed = *(uint32_t*)hash;
+    uint32_t seed = hash->number;
     uint8_t* data = (uint8_t*)key;
     int i;
 
@@ -34,10 +35,10 @@ void hash_update (void* hash, void* key, int len)
         seed = 33 * seed + data[i];
     }
 
-    *(uint32_t*)hash = seed;
+    hash->number = seed;
 }
 
-void hash_remainder (void* hash, void* out)
+void hash_remainder (hash_t* hash, void* out)
 {
-    *(uint32_t*)out = *(uint32_t*)hash;
+    *(uint32_t*)out = hash->number;
 }

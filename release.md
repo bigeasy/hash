@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Use union for native DJB object type. #51.
  * Add object files to `.gitignore`. #50.
  * Tidy `package.json` for `hash.stream`. #48.
  * Test `crypto.Hash.digest` with no encoding. #47.
