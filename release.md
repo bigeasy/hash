@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Test block hash buffering. #53.
  * Create a `require.t.js` for `hash.block`. #52.
  * Use union for native DJB object type. #51.
  * Add object files to `.gitignore`. #50.
