@@ -4,3 +4,5 @@
 /.proof.out
 /coverage
 /*/build
+/hash.djb.native/djb
+/*/*.o
