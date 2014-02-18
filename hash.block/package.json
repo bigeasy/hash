@@ -1,6 +1,6 @@
 {
     "name":             "hash.block",
-    "version":          "9.9.9",
+    "version":          "0.0.0",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "An abstract hash stream class that feeds hash algorithm blocks of bytes.",
     "keywords":
