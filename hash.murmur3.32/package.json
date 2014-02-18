@@ -2,7 +2,7 @@
     "name":             "hash.murmur3.32",
     "version":          "9.9.9",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "A pure-JavaScript 32-bit Murmur3 hash that implements the `crypto.Hash` and `stream.Transform` interfaces.`",
+    "description":      "A pure-JavaScript 32-bit Murmur3 hash that implements the `crypto.Hash` and `stream.Transform` interfaces.",
     "keywords":
     [
                         "hash", "digest", "checksum", "algorithm", "murmur",
