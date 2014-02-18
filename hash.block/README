@@ -1,0 +1,3 @@
+Hash Block
+
+An abstract hash stream class that feeds hash algorithm blocks of bytes.
