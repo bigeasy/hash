@@ -1,0 +1,4 @@
+Hash Murmur3.32
+
+A pure-JavaScript 32-bit Murmur3 hash that implements the `crypto.Hash` and
+`stream.Transform` interfaces.

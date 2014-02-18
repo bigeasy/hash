@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Add a `README` to Murmur3.32. #59.
  * Add a `package.json` to Murmur3.32. #58.
  * Test block hash buffering. #53.
  * Create a `require.t.js` for `hash.block`. #52.
