@@ -1,0 +1,30 @@
+{
+    "name":             "hash.block",
+    "version":          "9.9.9",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "An abstract hash stream class that feeds hash algorithm blocks of bytes.",
+    "keywords":
+    [
+                        "hash", "digest", "checksum", "algorithm"
+    ],
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/hash",
+    "bugs":             "https://github.com/bigeasy/hash/issues",
+    "licenses":
+    [{
+                        "type": "MIT",
+                        "url": "http://github.com/bigeasy/hash/raw/master/LICENSE"
+    }],
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/hash.git"
+    },
+    "dependencies":
+    {
+                        "hash.stream": "0.0.0"
+    },
+    "devDependencies":
+    {
+    }
+}
