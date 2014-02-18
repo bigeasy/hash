@@ -1,0 +1,31 @@
+{
+    "name":             "hash.murmur3.32",
+    "version":          "9.9.9",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "A pure-JavaScript 32-bit Murmur3 hash that implements the `crypto.Hash` and `stream.Transform` interfaces.`",
+    "keywords":
+    [
+                        "hash", "digest", "checksum", "algorithm", "murmur",
+                        "murmur3"
+    ],
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/hash",
+    "bugs":             "https://github.com/bigeasy/hash/issues",
+    "licenses":
+    [{
+                        "type": "MIT",
+                        "url": "http://github.com/bigeasy/hash/raw/master/LICENSE"
+    }],
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/hash.git"
+    },
+    "dependencies":
+    {
+                        "hash.block": "0.0.0"
+    },
+    "devDependencies":
+    {
+    }
+}
