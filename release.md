@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Upgrade Proof to 0.0.44. #61.
  * Add a `README` to Murmur3.32. #59.
  * Add a `package.json` to Murmur3.32. #58.
  * Test block hash buffering. #53.
