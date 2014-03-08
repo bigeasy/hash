@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Remove "url" from `package.json`. #62.
  * Upgrade Proof to 0.0.44. #61.
  * Add a `README` to Murmur3.32. #59.
  * Add a `package.json` to Murmur3.32. #58.
