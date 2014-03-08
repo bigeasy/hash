@@ -1,7 +1,7 @@
 {
     "name" :            "hash",
     "version":          "0.0.0",
-    "homepage":         "http://bigeasy.github.com/hash",
+    "homepage":         "http://bigeasy.github.io/hash",
     "keywords":
     [
                         "hash", "fnv", "djb"
