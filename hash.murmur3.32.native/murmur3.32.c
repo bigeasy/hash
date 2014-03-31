@@ -4,6 +4,7 @@
  */
 
 #include <stdlib.h>
+#include "hash.h"
 
 #if defined(_MSC_VER)
 
@@ -44,16 +45,15 @@ FORCE_INLINE uint32_t fmix32 (uint32_t h)
 
 char needed[] = "0xb0f57ee3";
 
-void* hash_allocate (uint32_t seed)
+hash_t hash_allocate (uint32_t seed)
 {
-    uint32_t* hash = malloc(sizeof(uint32_t));
-    *hash = seed;
+    hash_t hash;
+    hash.number = seed;
     return hash;
 }
 
-void hash_free (void* hash)
+void hash_free (hash_t hash)
 {
-    free(hash);
 }
 
 int hash_block_size ()
@@ -61,19 +61,16 @@ int hash_block_size ()
     return 4;
 }
 
-void hash_update (void * hash, void* key, int len)
+const uint32_t c1 = 0xcc9e2d51;
+const uint32_t c2 = 0x1b873593;
+
+void hash_update (hash_t* hash, void* buffer, int blocks)
 {
-    const uint8_t * data = (const uint8_t*)key;
-    const int nblocks = len / 4;
-
-    uint32_t h1 = *(uint32_t*)hash;
-
-    const uint32_t c1 = 0xcc9e2d51;
-    const uint32_t c2 = 0x1b873593;
-
-    const uint32_t * blocks = (const uint32_t *)(data + nblocks * 4);
-    for(int i = -nblocks; i; i++) {
-        uint32_t k1 = getblock32(blocks, i);
+    const uint8_t * data = (const uint8_t*)buffer;
+    uint32_t h1 = hash->number;
+    const uint32_t * block = (const uint32_t *)(data + blocks * 4);
+    for(int i = -blocks; i; i++) {
+        uint32_t k1 = getblock32(block, i);
 
         k1 *= c1;
         k1 = ROTL32(k1, 15);
@@ -83,10 +80,15 @@ void hash_update (void * hash, void* key, int len)
         h1 = ROTL32(h1, 13);
         h1 = h1*5 + 0xe6546b64;
     }
+    hash->number = h1;
+}
 
-    const uint8_t * tail = (const uint8_t*)(data + nblocks*4);
+void hash_remainder (hash_t* hash, void* buffer, int length)
+{
+    const uint8_t * tail = (const uint8_t*)buffer;
+    uint32_t h1 = hash->number;
     uint32_t k1 = 0;
-    switch(len & 3) {
+    switch(length & 3) {
     case 3: k1 ^= tail[2] << 16;
     case 2: k1 ^= tail[1] << 8;
     case 1: k1 ^= tail[0];
@@ -96,13 +98,8 @@ void hash_update (void * hash, void* key, int len)
             h1 ^= k1;
     };
 
-    h1 ^= len;
+    h1 ^= length;
     h1 = fmix32(h1);
 
-    *(uint32_t*)hash = h1;
-}
-
-void hash_remainder (void* hash, void* out)
-{
-    *(uint32_t*)out = *(uint32_t*)hash;
+    hash->number = h1;
 }
