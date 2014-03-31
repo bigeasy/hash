@@ -38,7 +38,7 @@ void hash_update (hash_t* hash, void* key, int len)
     hash->number = seed;
 }
 
-void hash_remainder (hash_t* hash, void* out)
+void hash_remainder (hash_t* hash, void* key, int len, void* out)
 {
     *(uint32_t*)out = hash->number;
 }
