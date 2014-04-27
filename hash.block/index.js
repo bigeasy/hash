@@ -41,8 +41,8 @@ BlockStream.prototype._transform = function (buffer, encoding, callback) {
 }
 
 BlockStream.prototype._flush = function (callback) {
-    var buffer = this._buffer
-    var hash = this._remainder(buffer, this._buffered)
+    var hash = this._remainder(this._buffer, this._buffered)
+    var buffer = new Buffer(hash.length * 4)
     for (var i = 0, I = hash.length; i < I; i++) {
         buffer.writeUInt32BE(hash[i], 4 * i)
     }
