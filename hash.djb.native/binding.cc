@@ -6,11 +6,15 @@
 #include <stdio.h>
 
 extern "C" {
-extern void* hash_allocate (uint32_t seed);
-extern void hash_free (void* hash);
+typedef union {
+    void* buffer;
+    uint32_t number;
+} hash_t;
+extern hash_t hash_allocate (uint32_t seed);
+extern void hash_free (hash_t hash);
 extern int hash_block_size();
-extern void hash_update(void* hash, void* key, int len);
-extern void hash_remainder(void* hash, void* out);
+extern void hash_update(hash_t* hash, void* key, int len);
+extern void hash_remainder(hash_t* hash, void* key, int len, void* out);
 }
 
 using namespace v8;
@@ -25,15 +29,15 @@ protected:
     static Handle<Value> HashBlock(const Arguments& args);
     static Handle<Value> HashRemainder (const Arguments& args);
 
-    Hash () : hash_(NULL) {
+    Hash () {
+        hash_.number = 0;
     }
 
     ~Hash () {
-        if (hash_) hash_free(hash_);
     }
 
 private:
-    void* hash_;
+    hash_t hash_;
 };
 
 void Hash::Initialize (Handle<Object> target) {
@@ -61,10 +65,6 @@ Handle<Value> Hash::New (const Arguments& args) {
 
     Hash* hash = new Hash();
     hash->hash_ = hash_allocate(seed);
-    if (hash->hash_ == NULL) {
-        return ThrowException(Exception::Error(String::New(
-          "Unable to allocate hash.")));
-    }
 
     hash->Wrap(args.This());
     return args.This();
@@ -79,7 +79,7 @@ Handle<Value> Hash::HashBlock (const Arguments& args) {
         return ThrowException(Exception::TypeError(String::New("Not a buffer")));
     }
 
-    hash_update(hash->hash_, Buffer::Data(args[0]), Buffer::Length(args[0]));
+    hash_update(&hash->hash_, Buffer::Data(args[0]), Buffer::Length(args[0]));
 
     return args.This();
 }
@@ -90,14 +90,13 @@ Handle<Value> Hash::HashRemainder (const Arguments& args) {
 
     Hash *hash = ObjectWrap::Unwrap<Hash>(args.This());
 
-    hash_remainder(hash->hash_, &value);
+    hash_remainder(&hash->hash_, Buffer::Data(args[0]), args[1]->Uint32Value(), &value);
 
-    return scope.Close(StringBytes::Encode(
-        reinterpret_cast<const char*>(&value), 4, BUFFER));
+    return scope.Close(StringBytes::Encode(reinterpret_cast<const char*>(&value), 4, BUFFER));
 }
 
 void init(Handle<Object> target) {
-  Hash::Initialize(target);
+    Hash::Initialize(target);
 }
 
 NODE_MODULE(djb, init);
