@@ -5,7 +5,6 @@ var ok = require('assert').ok
 var __slice = [].slice
 
 function HashStream (blockSize) {
-    this._blockSize = blockSize
     stream.Transform.call(this)
 }
 util.inherits(HashStream, stream.Transform)

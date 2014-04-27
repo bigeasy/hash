@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Remove `_blockSize` from `HashStream`. #65.
  * Change homepage TLD to `io`. #63.
  * Remove "url" from `package.json`. #62.
  * Upgrade Proof to 0.0.44. #61.
