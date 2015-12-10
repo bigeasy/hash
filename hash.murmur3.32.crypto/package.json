@@ -1,5 +1,5 @@
 {
-    "name":             "hash.murmur3.32",
+    "name":             "hash.murmur3.32.crypto",
     "version":          "0.0.0",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "A pure-JavaScript 32-bit Murmur3 hash that implements the `crypto.Hash` and `stream.Transform` interfaces.",
