@@ -1,6 +1,6 @@
 {
     "name":             "hash.fnv",
-    "version":          "9.9.9",
+    "version":          "0.0.0",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "A pure-JavaScript minimalist implementation of the FNV hash.",
     "keywords":
@@ -11,6 +11,7 @@
     "homepage":         "https://github.com/bigeasy/hash",
     "bugs":             "https://github.com/bigeasy/hash/issues",
     "license":          "MIT",
+    "main":             "fnv",
     "repository":
     {
                         "type": "git",
