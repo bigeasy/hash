@@ -55,7 +55,6 @@ function murmur (hash, buffer, start, end) {
                  (buffer[i * 4 + 2 + start] << 16) +
                  (buffer[i * 4 + 3 + start] << 24)
 
-        console.log('k1', k1)
         k1 = multiply(k1, c1)
         k1 = rotl32(k1, 15)
         k1 = multiply(k1, c2)
@@ -68,8 +67,6 @@ function murmur (hash, buffer, start, end) {
 
     var k1 = 0
 
-    console.log('before remainder', hash, length, remainder, buffer.slice(length, length + remainder).toString('hex'))
-
     switch (remainder) {
     case 3: k1 ^= buffer[i * 4 + 2 + start] << 16
     case 2: k1 ^= buffer[i * 4 + 1 + start] << 8
@@ -79,19 +76,12 @@ function murmur (hash, buffer, start, end) {
         k1 = multiply(k1, c2)
         hash ^= k1
     }
-    console.log('after remainder', hash, length, remainder)
 
     hash ^= length + remainder
 
     hash = fmix32(hash) >>> 0
 
-    console.log('hashed', hash)
     return hash
-    /*
-        (hash >>> 24 & 0xff) +
-        (hash >>> 16 & 0xff) +
-        hash >>> 8 & 0xff +
-        hash & 0xff*/
 }
 
 module.exports = murmur
