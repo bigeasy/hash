@@ -56,6 +56,7 @@ function HashMurmur332 (seed) {
                      (buffer[i * 4 + 2] << 16) +
                      (buffer[i * 4 + 3] << 24)
 
+            console.log('k1', k1)
             k1 = multiply(k1, c1)
             k1 = rotl32(k1, 15)
             k1 = multiply(k1, c2)
@@ -68,6 +69,7 @@ function HashMurmur332 (seed) {
     }
 
     function remainder (buffer, remainder) {
+        console.log('before remainder', hash, length, remainder, buffer.slice(0, remainder).toString('hex'))
         var k1 = 0
 
         switch (remainder) {
@@ -79,11 +81,13 @@ function HashMurmur332 (seed) {
             k1 = multiply(k1, c2)
             hash ^= k1
         }
+        console.log('after remainder', hash, length, remainder)
 
         hash ^= length + remainder
 
         hash = fmix32(hash) >>> 0
 
+        console.log('hashed', hash)
         return [ hash ]
     }
 
