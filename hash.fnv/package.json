@@ -1,0 +1,25 @@
+{
+    "name":             "hash.fnv",
+    "version":          "9.9.9",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "A pure-JavaScript minimalist implementation of the FNV hash.",
+    "keywords":
+    [
+                        "hash", "digest", "checksum", "algorithm", "murmur", "murmur3"
+    ],
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/hash",
+    "bugs":             "https://github.com/bigeasy/hash/issues",
+    "license":          "MIT",
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/hash.git"
+    },
+    "dependencies":
+    {
+    },
+    "devDependencies":
+    {
+    }
+}
