@@ -22,5 +22,9 @@
     },
     "devDependencies":
     {
+    },
+    "scripts":
+    {
+        "test": "../node_modules/.bin/proof test */*.t.js"
     }
 }
