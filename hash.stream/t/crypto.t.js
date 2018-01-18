@@ -23,5 +23,5 @@ require('proof')(2, function (equal, deepEqual) {
 
     hash = new PassThrough
     hash.update(new Buffer([ 0, 1, 0, 0x0a  ]))
-    deepEqual(hash.digest().toJSON(), [ 0, 1, 0, 0xa ], 'buffer')
+    deepEqual(hash.digest().toJSON().data, [ 0, 1, 0, 0xa ], 'buffer')
 })

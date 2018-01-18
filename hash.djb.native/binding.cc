@@ -1,6 +1,6 @@
 #include <node.h>
 #include <node_buffer.h>
-#include <string_bytes.h>
+// #include <string_bytes.h>
 #include <node_object_wrap.h>
 #include <v8.h>
 #include <stdio.h>

@@ -4,7 +4,7 @@ set -e
 
 echo ""
 
-(cd "hash.djb.native" && node-gyp configure && node-gyp build)
+# (cd "hash.djb.native" && node-gyp configure && node-gyp build)
 
 (NODE_PATH=. proof run */t/*.t.js | tee .proof.out | proof progress) \
   || (proof errors < .proof.out) \

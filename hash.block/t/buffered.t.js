@@ -3,7 +3,7 @@
 require('proof')(2, function (equal, deepEqual) {
     var HashBlock = require('..')
     var blocked = new HashBlock(function (block, count) {
-        deepEqual(block.toJSON(), [ 1, 2, 3, 4 ], 'block')
+        deepEqual(block.toJSON().data, [ 1, 2, 3, 4 ], 'block')
         equal(1, count, 'count')
     }, function () {
         return [ 0 ]
