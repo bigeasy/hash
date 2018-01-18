@@ -15,5 +15,6 @@ branches:
 # build output.
 
 before_install:
-  - npm install
+  - npm install -g npm
+  - npm install --no-save --no-package-lock
   - npm install -g istanbul coveralls node-gyp
