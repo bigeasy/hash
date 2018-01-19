@@ -7,3 +7,4 @@
 /hash.djb.native/djb
 /hash.murmur3.32.native/murmur3.32
 /*/*.o
+/*/coverage
