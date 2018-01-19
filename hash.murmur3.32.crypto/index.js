@@ -32,6 +32,7 @@ function fmix32 (hash) {
 // do not do this within Murmur's mix function. I'm leaving it in place for a
 // benchmark where I can gauge the cost of `>>> 0`.
 
+/*
 function fmix32_pure (hash) {
     hash = (hash ^ (hash >>> 16)) >>> 0
     hash = multiply(hash, 0x85ebca6b)
@@ -40,6 +41,7 @@ function fmix32_pure (hash) {
     hash = (hash ^ (hash >>> 16)) >>> 0
     return hash
 }
+*/
 
 function rotl32 (number, bits) {
     return ((number << bits) | (number >>> 32 - bits)) >>> 0

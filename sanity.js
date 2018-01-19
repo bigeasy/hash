@@ -30,15 +30,20 @@ module.exports.check = function (constructor, options) {
     var summary
     var key = new Buffer(256)
 
+    /*
     if (arguments.length == 3) {
         callback = options
         options = { twiddle: true, blockSize: 0 }
     }
+    */
 
     function createHash (seed) {
+        return new constructor(seed)
+        /*
         return typeof constructor == 'string'
              ? require('crypto').createHash(constructor)
              : new constructor(seed)
+        */
     }
 
     function run (i) {
@@ -63,11 +68,11 @@ module.exports.check = function (constructor, options) {
         hash.on('end', function () {})
         for (var i = 0; i < hashes.length; i++) {
             var blockSize = options.blockSize || hashes[i].length
-            if (options.twiddle) {
+            // if (options.twiddle) {
                 for (var j = 0, J = blockSize / 4; j < J; j++) {
                     hashes[i].writeUInt32LE(hashes[i].readUInt32BE(j * 4), j * 4)
                 }
-            }
+            // }
             hash.write(hashes[i].slice(0, blockSize))
         }
         hash.end()
