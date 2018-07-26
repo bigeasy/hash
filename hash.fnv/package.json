@@ -1,6 +1,6 @@
 {
     "name":             "hash.fnv",
-    "version":          "1.0.2",
+    "version":          "1.0.3",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "A pure-JavaScript minimalist implementation of the FNV hash.",
     "keywords":
