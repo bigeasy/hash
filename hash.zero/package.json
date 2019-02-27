@@ -1,28 +1,26 @@
 {
-    "name":             "hash.zero",
-    "version":          "0.0.0",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "A null hash that implements the `crypto.Hash` and `stream.Transform` interfaces that always returns zero.",
+    "name":                 "hash.zero",
+    "version":              "0.0.0",
+    "description":
+
+      "A null hash that implements the `crypto.Hash` and `stream.Transform` interfaces that always returns zero.",
+
     "keywords":
     [
-                        "hash", "digest", "checksum", "algorithm", "murmur"
+                            "hash", "digest", "checksum", "algorithm", "murmur"
     ],
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/hash",
-    "bugs":             "https://github.com/bigeasy/hash/issues",
-    "licenses":
-    [{
-                        "type": "MIT",
-                        "url": "http://github.com/bigeasy/hash/raw/master/LICENSE"
-    }],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
     "repository":
     {
-                        "type": "git",
-                        "url": "http://github.com/bigeasy/hash.git"
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/hash.git"
     },
     "dependencies":
     {
-                        "hash.8.32": "0.0.0"
+                            "hash.8.32":                    "0.0.0"
     },
     "devDependencies":
     {
