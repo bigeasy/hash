@@ -1,0 +1,28 @@
+{
+    "name":                 "hash.8.32",
+    "version":              "0.0.1",
+    "description":
+
+      "A implementation of the `crypto.Hash` and `stream.Transform` for 32-bit hashes that operate a byte at a time.",
+
+    "keywords":
+    [
+                            "hash", "digest", "checksum", "algorithm", "murmur"
+    ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "license":              "MIT",
+    "repository":
+    {
+                            "type": "git",
+                            "url": "bigeasy/hash"
+    },
+    "dependencies":
+    {
+    },
+    "devDependencies":
+    {
+    }
+}

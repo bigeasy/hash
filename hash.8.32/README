@@ -1,0 +1,4 @@
+Hash 8 32
+
+A implementation of the `crypto.Hash` and `stream.Transform` for 32-bit hashes
+that operate a byte at a time.
