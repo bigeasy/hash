@@ -1,6 +1,6 @@
 {
     "name":                 "hash.stream",
-    "version":              "0.0.0",
+    "version":              "0.0.1",
     "description":
 
       "An abstract hash stream class that implements `crypto.Hash`",
