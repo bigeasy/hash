@@ -2,7 +2,7 @@ exports.sanity = function (okay, constructor, expected, options, callback) {
         var hashed = 0
         var hashes = []
         var summary
-        var key = new Buffer(256)
+        var key = Buffer.alloc(256)
 
         if (arguments.length == 3) {
             callback = options
@@ -48,7 +48,8 @@ exports.sanity = function (okay, constructor, expected, options, callback) {
         }
 
         function done () {
-            okay(summary.slice(0, 4).toString('hex'), expected, constructor.name + ' sanity')
+            var name = constructor.name || constructor
+            okay(summary.slice(0, 4).toString('hex'), expected, name + ' sanity')
             callback()
         }
     }

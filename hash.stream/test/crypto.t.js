@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+require('proof')(2, prove)
 
-require('proof')(2, function (equal, deepEqual) {
+function prove (okay) {
     var HashStream = require('..')
     var util = require('util')
     var hash
@@ -18,10 +18,10 @@ require('proof')(2, function (equal, deepEqual) {
     }
 
     hash= new PassThrough
-    hash.update(new Buffer([ 0, 1, 0, 0x0a  ]))
-    equal(hash.digest('hex'), '0001000a', 'hex')
+    hash.update(Buffer.from([ 0, 1, 0, 0x0a  ]))
+    okay(hash.digest('hex'), '0001000a', 'hex')
 
     hash = new PassThrough
-    hash.update(new Buffer([ 0, 1, 0, 0x0a  ]))
-    deepEqual(hash.digest().toJSON().data, [ 0, 1, 0, 0xa ], 'buffer')
-})
+    hash.update(Buffer.from([ 0, 1, 0, 0x0a  ]))
+    okay(hash.digest().toJSON().data, [ 0, 1, 0, 0xa ], 'buffer')
+}

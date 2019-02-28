@@ -1,25 +1,33 @@
 {
-    "name":             "hash.stream",
-    "version":          "0.0.0",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "An abstract hash stream class that implements `crypto.Hash`",
+    "name":                 "hash.stream",
+    "version":              "0.0.0",
+    "description":
+
+      "An abstract hash stream class that implements `crypto.Hash`",
+
     "keywords":
     [
-                        "hash", "digest", "checksum", "algorithm"
+                            "hash", "digest", "checksum", "algorithm"
     ],
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/hash",
-    "bugs":             "https://github.com/bigeasy/hash/issues",
-    "license":          "MIT",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "license":              "MIT",
     "repository":
     {
-                        "type": "git",
-                        "url": "bigeasy/hash"
+                            "type": "git",
+                            "url": "bigeasy/hash"
     },
     "dependencies":
     {
     },
     "devDependencies":
     {
+                            "proof":                        "7.0.x"
+    },
+    "scripts":
+    {
+                            "test": "proof test test/*.t.js"
     }
 }
