@@ -1,6 +1,6 @@
 {
     "name":                 "hash.8.32",
-    "version":              "0.0.0",
+    "version":              "0.0.1",
     "description":
 
       "A implementation of the `crypto.Hash` and `stream.Transform` for 32-bit hashes that operate a byte at a time.",
