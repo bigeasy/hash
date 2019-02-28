@@ -1,30 +1,34 @@
 {
-    "name":             "hash.block",
-    "version":          "0.0.0",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "An abstract hash stream class that feeds hash algorithm blocks of bytes.",
+    "name":                 "hash.block",
+    "version":              "0.0.0",
+    "description":
+
+      "An abstract hash stream class that feeds hash algorithm blocks of bytes.",
+
     "keywords":
     [
-                        "hash", "digest", "checksum", "algorithm"
+                            "hash", "digest", "checksum", "algorithm"
     ],
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/hash",
-    "bugs":             "https://github.com/bigeasy/hash/issues",
-    "licenses":
-    [{
-                        "type": "MIT",
-                        "url": "http://github.com/bigeasy/hash/raw/master/LICENSE"
-    }],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "license":              "MIT",
     "repository":
     {
-                        "type": "git",
-                        "url": "http://github.com/bigeasy/hash.git"
+                            "type": "git",
+                            "url": "bigeasy/hash"
     },
     "dependencies":
     {
-                        "hash.stream": "0.0.0"
+                            "hash.stream":                  "0.0.2"
     },
     "devDependencies":
     {
+                            "proof":                        "7.0.x"
+    },
+    "scripts":
+    {
+                            "test": "proof test test/*.t.js"
     }
 }

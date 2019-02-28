@@ -4,7 +4,7 @@ var util = require('util')
 function BlockStream (blocks, remainder, blockSize) {
     this._blocks = blocks
     this._remainder = remainder
-    this._buffer = new Buffer(blockSize)
+    this._buffer = Buffer.alloc(blockSize)
     this._buffered = 0
     HashStream.call(this)
 }
@@ -42,7 +42,7 @@ BlockStream.prototype._transform = function (buffer, encoding, callback) {
 
 BlockStream.prototype._flush = function (callback) {
     var hash = this._remainder(this._buffer, this._buffered)
-    var buffer = new Buffer(hash.length * 4)
+    var buffer = Buffer.alloc(hash.length * 4)
     for (var i = 0, I = hash.length; i < I; i++) {
         buffer.writeUInt32BE(hash[i], 4 * i)
     }
