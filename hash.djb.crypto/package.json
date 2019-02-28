@@ -1,0 +1,35 @@
+{
+    "name":                 "hash.djb.crypto",
+    "version":              "0.0.0",
+    "description":
+
+      "A pure-JavaScript 32-bit DJB hash that implements the `crypto.Hash` and `stream.Transform` interfaces.",
+
+    "keywords":
+    [
+                            "hash", "digest", "checksum", "algorithm", "murmur",
+                            "murmur3"
+    ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "repository":
+    {
+                            "type": "git",
+                            "url": "bigeasy/hash"
+    },
+    "dependencies":
+    {
+                            "hash.8.32":                   "0.0.2"
+    },
+    "devDependencies":
+    {
+                            "cadence":                      "3.0.x",
+                            "proof":                        "7.0.x"
+    },
+    "scripts":
+    {
+                            "test": "proof test test/*.t.js"
+    }
+}
