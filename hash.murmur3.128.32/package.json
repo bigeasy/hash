@@ -1,0 +1,37 @@
+{
+    "name":                 "hash.murmur3.128",
+    "version":              "0.0.1",
+    "description":
+
+      "A pure-JavaScript minimalist implementation of the 128-bit Murmur3 hash.",
+
+    "keywords":
+    [
+                            "hash", "digest", "checksum", "algorithm", "murmur",
+                            "murmur3"
+    ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "license":              "MIT",
+    "repository":
+    {
+                            "type": "git",
+                            "url": "bigeasy/hash"
+    },
+    "dependencies":
+    {
+                            "hash.block":                   "0.0.1"
+    },
+    "devDependencies":
+    {
+                            "cadence":                      "3.0.x",
+                            "proof":                        "7.0.x"
+    },
+    "main":                 "murmur3.128",
+    "scripts":
+    {
+                            "test": "proof test test/*.t.js"
+    }
+}
