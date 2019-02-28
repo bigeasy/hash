@@ -9,3 +9,5 @@
 /hash.murmur3.32.native/murmur3.32
 /*/*.o
 /*/coverage
+/*.*/.nyc_output
+/.nyc_output
