@@ -21,8 +21,14 @@
     },
     "dependencies":
     {
+                            "hash.stream": "0.0.1"
     },
     "devDependencies":
     {
+                            "proof":                        "7.0.x"
+    },
+    "scripts":
+    {
+                            "test": "proof test test/*.t.js"
     }
 }
