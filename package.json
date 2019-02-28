@@ -11,7 +11,7 @@
     [],
     "devDependencies":
     {
-                        "proof": "0.0.47"
+                        "proof": "7.0.x"
     },
     "dependencies":
     {},

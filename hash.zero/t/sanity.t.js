@@ -1,4 +1,4 @@
-require('../../proof')(1, function (step, sanity, equal) {
+require('proof')(1, function (okay, callack) {
     var HashZero = new require('..')
-    sanity(HashZero, '00000000', step())
+    require('../../proof').sanity(okay, HashZero, '00000000', {}, callback)
 })
