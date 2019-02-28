@@ -16,7 +16,7 @@
     "repository":
     {
                             "type": "git",
-                            "url": "http://github.com/bigeasy/hash.git"
+                            "url": "bigeasy/hash"
     },
     "dependencies":
     {
