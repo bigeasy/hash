@@ -21,6 +21,6 @@
     },
     "scripts":
     {
-                        "test": "t/test"
+                        "test": "proof test */test/*.t.js"
     }
 }
