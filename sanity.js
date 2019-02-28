@@ -3,7 +3,7 @@ var events = require('events'), util = require('util')
 module.exports.cryptoify = function (f) {
     function Cryptoify (seed) {
         this._seed = seed
-        this._buffer = new Buffer(0)
+        this._buffer = Buffer.alloc(0)
     }
     util.inherits(Cryptoify, events.EventEmitter)
 
@@ -15,7 +15,7 @@ module.exports.cryptoify = function (f) {
     Cryptoify.prototype.end = function (buffer) {
         if (buffer) this.write(buffer)
         var hash = f(this._seed, this._buffer, 0, this._buffer.length)
-        var buffer = new Buffer(4)
+        var buffer = Buffer.alloc(4)
         buffer.writeUInt32BE(hash, 0)
         this.emit('data', buffer)
         this.emit('end')
@@ -28,7 +28,7 @@ module.exports.check = function (constructor, options) {
     var hashed = 0
     var hashes = []
     var summary
-    var key = new Buffer(256)
+    var key = Buffer.alloc(256)
 
     /*
     if (arguments.length == 3) {
