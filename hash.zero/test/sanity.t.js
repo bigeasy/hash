@@ -1,6 +1,10 @@
-require('proof')(1, prove)
+require('proof')(1, require('cadence')(prove))
 
-function prove (okay, callback) {
-    var HashZero = new require('..')
-    require('../../proof').sanity(okay, HashZero, '00000000', {}, callback)
+function prove (async, okay) {
+    var HashZero = new require('..'), sanity = require('../../sanity')
+    async(function () {
+        sanity.check(HashZero, async())
+    }, function (hash) {
+        okay(hash, '00000000', 'hashed correctly')
+    })
 }

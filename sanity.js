@@ -1,4 +1,7 @@
-var events = require('events'), util = require('util')
+var events = require('events')
+var util = require('util')
+var cadence = require('cadence')
+var delta = require('delta')
 
 module.exports.cryptoify = function (f) {
     function Cryptoify (seed) {
@@ -23,11 +26,11 @@ module.exports.cryptoify = function (f) {
     return Cryptoify
 }
 
-module.exports.check = function (constructor, options) {
-    options = options || { twiddle: true }
+module.exports.check = cadence(function (async, constructor, options) {
+    options || (options = {})
+
     var hashed = 0
     var hashes = []
-    var summary
     var key = Buffer.alloc(256)
 
     /*
@@ -46,37 +49,36 @@ module.exports.check = function (constructor, options) {
         */
     }
 
-    function run (i) {
-        key[i] = i
-        var hash = createHash(256 - i)
-        hash.on('data', function (block) {
-            hashes[i] = block
+    async(function () {
+        var i = 0
+        async.loop([], function () {
+            if (i == 256) {
+                return [ async.break ]
+            }
+            key[i] = i
+            var hash = createHash(256 - i)
+            async(function () {
+                delta(async()).ee(hash).on('data', []).on('end')
+                hash.end(key.slice(0, i))
+            }, function (data) {
+                hashes[i] = Buffer.concat(data)
+                i++
+            })
         })
-        hash.on('end', function () {
-            if (++hashed == 256) hashHashes()
-        })
-        hash.end(key.slice(0, i))
-    }
-
-    for (var i = 0; i < 256; i++) { run(i) }
-
-    function hashHashes () {
+    }, function () {
         var hash = createHash(0)
-        hash.on('data', function (buffer) {
-            summary = buffer
-        })
-        hash.on('end', function () {})
-        for (var i = 0; i < hashes.length; i++) {
-            var blockSize = options.blockSize || hashes[i].length
-            // if (options.twiddle) {
+        async(function () {
+            delta(async()).ee(hash).on('data', []).on('end')
+            for (var i = 0; i < hashes.length; i++) {
+                var blockSize = options.blockSize || hashes[i].length
                 for (var j = 0, J = blockSize / 4; j < J; j++) {
                     hashes[i].writeUInt32LE(hashes[i].readUInt32BE(j * 4), j * 4)
                 }
-            // }
-            hash.write(hashes[i].slice(0, blockSize))
-        }
-        hash.end()
-    }
-
-    return summary.slice(0, 4).toString('hex')
-}
+                hash.write(hashes[i].slice(0, blockSize))
+            }
+            hash.end()
+        }, function (data) {
+            return Buffer.concat(data).slice(0, 4).toString('hex')
+        })
+    })
+})
