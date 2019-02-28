@@ -15,12 +15,17 @@
     "repository":
     {
                         "type": "git",
-                        "url": "http://github.com/bigeasy/hash.git"
+                            "url": "bigeasy/hash"
     },
     "dependencies":
     {
     },
     "devDependencies":
     {
+                            "proof":                        "7.0.x"
+    },
+    "scripts":
+    {
+                            "test": "proof test test/*.t.js"
     }
 }
