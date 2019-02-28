@@ -1,6 +1,6 @@
 {
     "name":                 "hash.block",
-    "version":              "0.0.0",
+    "version":              "0.0.1",
     "description":
 
       "An abstract hash stream class that feeds hash algorithm blocks of bytes.",
