@@ -1,26 +1,28 @@
 {
-    "name" :            "hash",
-    "version":          "0.0.0",
-    "homepage":         "http://bigeasy.github.io/hash",
+    "name":                 "hash",
+    "version":              "0.0.0",
     "keywords":
     [
-                        "hash", "fnv", "djb"
+                            "hash", "fnv", "djb"
     ],
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "contributors":
-    [],
-    "devDependencies":
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "http://bigeasy.github.io/hash",
+    "license":              "MIT",
+    "repository":
     {
-                        "proof": "7.0.x"
+                            "type": "git",
+                            "url": "bigeasy/hash"
     },
     "dependencies":
-    {},
-    "repository": {
-                        "type": "git",
-                        "url": "bigeasy/hash"
+    {
+    },
+    "devDependencies":
+    {
+                            "prospective":                  "0.0.x"
     },
     "scripts":
     {
-                        "test": "proof test */test/*.t.js"
+                            "test": "mocha */test/*.test.js"
     }
 }
