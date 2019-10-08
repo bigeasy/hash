@@ -1,21 +1,24 @@
 {
-    "name":             "hash.murmur3.32",
-    "version":          "0.0.1",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "A pure-JavaScript minimalist implementation of the 32-bit Murmur3 hash.",
+    "name":                 "hash.murmur3.32",
+    "version":              "0.0.1",
+    "description":
+
+      "A pure-JavaScript minimalist implementation of the 32-bit Murmur3 hash.",
+
     "keywords":
     [
-                        "hash", "digest", "checksum", "algorithm", "murmur", "murmur3"
+                            "hash", "digest", "checksum", "algorithm", "murmur",
+                            "murmur3"
     ],
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/hash",
-    "bugs":             "https://github.com/bigeasy/hash/issues",
-    "license":          "MIT",
-    "main":             "murmur3.32",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "license":              "MIT",
     "repository":
     {
-                        "type": "git",
-                        "url": "bigeasy/hash"
+                            "type": "git",
+                            "url": "bigeasy/hash"
     },
     "dependencies":
     {
@@ -23,8 +26,9 @@
     "devDependencies":
     {
                             "cadence":                      "3.0.x",
-                            "proof":                        "7.0.x"
+                            "proof":                        "8.0.0-alpha.7"
     },
+    "main":                 "murmur3.32",
     "scripts":
     {
                             "test": "proof test test/*.t.js"

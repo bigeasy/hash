@@ -8,8 +8,8 @@ function prove (okay) {
     }, function () {
         return [ 0 ]
     }, 4);
-    blocked.write(new Buffer([ 1, 2 ]))
-    blocked.write(new Buffer([ 3 ]))
-    blocked.write(new Buffer([ 4 ]))
+    blocked.write(Buffer.from([ 1, 2 ]))
+    blocked.write(Buffer.from([ 3 ]))
+    blocked.write(Buffer.from([ 4 ]))
     blocked.end()
 }

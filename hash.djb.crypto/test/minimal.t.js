@@ -1,7 +1,7 @@
 require('proof')(1, prove)
 
 function prove (okay) {
-    var buffer = new Buffer([ 7 ])
+    var buffer = Buffer.from([ 7 ])
     var HashDJB = require('..')
     var djb = new HashDJB(0x7fffffff)
     djb.on('data', function (block) {

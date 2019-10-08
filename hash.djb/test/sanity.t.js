@@ -1,10 +1,7 @@
-require('proof')(1, require('cadence')(prove))
+require('proof')(1, prove)
 
-function prove (async, okay) {
-    var djb = require('../djb.js'), sanity = require('../../sanity')
-    async(function () {
-        sanity.check(sanity.cryptoify(djb), async())
-    }, function (hash) {
-        okay(hash, 'bdb4b640', 'hashes correctly')
-    })
+async function prove (okay) {
+    const djb = require('../djb.js'), sanity = require('../../sanity')
+    const hash = await sanity.check(sanity.cryptoify(djb))
+    okay(hash, 'bdb4b640', 'hashes correctly')
 }

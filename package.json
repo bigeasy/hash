@@ -19,10 +19,11 @@
     },
     "devDependencies":
     {
+                            "proof":                        "^8.0.0-alpha.7",
                             "prospective":                  "0.0.x"
     },
     "scripts":
     {
-                            "test": "mocha */test/*.test.js"
+                            "test": "proof hash.*/test/*.t.js"
     }
 }

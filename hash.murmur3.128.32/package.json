@@ -27,11 +27,11 @@
     "devDependencies":
     {
                             "cadence":                      "3.0.x",
-                            "proof":                        "7.0.x"
+                            "proof":                        "8.0.0-alpha.7"
     },
     "main":                 "murmur3.128",
     "scripts":
     {
-                            "test": "proof test test/*.t.js"
+                            "test": "proof test/*.t.js"
     }
 }

@@ -1,20 +1,22 @@
 {
-    "name":             "hash.djb",
-    "version":          "0.0.0",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "A pure-JavaScript minimalist implementation of the DJB hash.",
+    "name":                 "hash.djb",
+    "version":              "0.0.0",
+    "description":
+
+      "A pure-JavaScript minimalist implementation of the DJB hash.",
+
     "keywords":
     [
-                        "hash", "digest", "checksum", "algorithm", "djb"
+                            "hash", "digest", "checksum", "algorithm", "djb"
     ],
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/hash",
-    "bugs":             "https://github.com/bigeasy/hash/issues",
-    "license":          "MIT",
-    "main":             "fnv",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/hash",
+    "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "license":              "MIT",
     "repository":
     {
-                        "type": "git",
+                            "type": "git",
                             "url": "bigeasy/hash"
     },
     "dependencies":
@@ -22,10 +24,11 @@
     },
     "devDependencies":
     {
-                            "proof":                        "7.0.x"
+                            "proof":                        "8.0.0-alpha.7"
     },
+    "main":                 "djb",
     "scripts":
     {
-                            "test": "proof test test/*.t.js"
+                            "test": "proof test/*.t.js"
     }
 }

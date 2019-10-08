@@ -14,7 +14,7 @@ Hash832.prototype._transform = function (block, encoding, callback) {
 }
 
 Hash832.prototype._flush = function (callback) {
-    var buffer = new Buffer(4)
+    var buffer = Buffer.alloc(4)
     buffer.writeUInt32BE(this._hash, 0)
     this.push(buffer)
     callback()

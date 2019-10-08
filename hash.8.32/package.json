@@ -21,14 +21,14 @@
     },
     "dependencies":
     {
-                            "hash.stream": "0.0.2"
+                            "hash.stream":                  "0.0.2"
     },
     "devDependencies":
     {
-                            "proof":                        "7.0.x"
+                            "proof":                        "8.0.0-alpha.7"
     },
     "scripts":
     {
-                            "test": "proof test test/*.t.js"
+                            "test": "proof test/*.t.js"
     }
 }

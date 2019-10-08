@@ -14,6 +14,7 @@
     "contributors":         [],
     "homepage":             "https://github.com/bigeasy/hash",
     "bugs":                 "https://github.com/bigeasy/hash/issues",
+    "license":              "MIT",
     "repository":
     {
                             "type": "git",
@@ -21,15 +22,14 @@
     },
     "dependencies":
     {
-                            "hash.8.32":                   "0.0.2"
+                            "hash.8.32":                    "0.0.2"
     },
     "devDependencies":
     {
-                            "cadence":                      "3.0.x",
-                            "proof":                        "7.0.x"
+                            "proof":                        "^8.0.0-alpha.7"
     },
     "scripts":
     {
-                            "test": "proof test test/*.t.js"
+                            "test": "proof test/*.t.js"
     }
 }

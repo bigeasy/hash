@@ -1,11 +1,7 @@
-require('proof')(1, require('cadence')(prove))
+require('proof')(1, prove)
 
-
-function prove (async, okay) {
-    var HashFNV = new require('..'), sanity = require('../../sanity')
-    async(function () {
-        sanity.check(HashFNV, async())
-    }, function (hash) {
-        okay(hash, 'e3cbbe91', 'hashes correctly')
-    })
+async function prove (okay) {
+    const HashFNV = new require('..'), sanity = require('../../sanity')
+    const hash = await sanity.check(HashFNV)
+    okay(hash, 'e3cbbe91', 'hashes correctly')
 }
