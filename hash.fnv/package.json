@@ -25,10 +25,11 @@
     },
     "devDependencies":
     {
+                            "proof":                        "^8.0.0-alpha.7"
     },
     "main":                 "fnv",
     "scripts":
     {
-                            "test": "mocha"
+                            "test": "proof test/*.t.js"
     }
 }
