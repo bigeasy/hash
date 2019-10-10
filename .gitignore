@@ -1,5 +1,6 @@
 /node_modules/*
 /*/node_modules/
+/.dots
 /c/djb
 /c/fnv
 /.proof.out
