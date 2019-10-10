@@ -15,6 +15,7 @@ branches:
 # build output.
 
 before_install:
+  - for dir in hash.*; do (cd $dir && npm install --no-save --no-package-lock); done
   - npm install --no-save --no-package-lock
   - npm install -g nyc node-gyp prove
 

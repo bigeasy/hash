@@ -1,0 +1,4 @@
+title: Add `LICENSE` to sub-projects.
+milestone: Hash Survey
+project: Create a hash survey.
+label: enhancement
