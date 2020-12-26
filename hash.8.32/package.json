@@ -21,7 +21,7 @@
     },
     "dependencies":
     {
-                            "hash.stream":                  "0.0.2"
+                            "hash.stream":                  "0.0.3"
     },
     "devDependencies":
     {
