@@ -1,6 +1,6 @@
 {
     "name":                 "hash.fnv.crypto",
-    "version":              "0.0.0",
+    "version":              "0.0.1",
     "description":
 
       "A pure-JavaScript 32-bit FNV hash that implements the `crypto.Hash` and `stream.Transform` interfaces.",
