@@ -22,7 +22,7 @@
     },
     "dependencies":
     {
-                            "hash.8.32":                    "0.0.2"
+                            "hash.8.32":                    "0.0.3"
     },
     "devDependencies":
     {
